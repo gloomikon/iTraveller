@@ -89,10 +89,9 @@ targets:
                 CURRENT_PROJECT_VERSION: 1
                 DEVELOPMENT_TEAM: LA74W2Y6CY
                 GENERATE_INFOPLIST_FILE: YES
-                INFOPLIST_FILE: Sources/Info.plist
+                INFOPLIST_FILE: iTraveller/UA/Info.plist
                 INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
                 INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen.storyboard
-                INFOPLIST_KEY_UIMainStoryboardFile: Main
                 INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
                 IPHONEOS_DEPLOYMENT_TARGET: 13.0
                 LD_RUNPATH_SEARCH_PATHS:
@@ -107,4 +106,6 @@ targets:
                 SWIFT_EMIT_LOC_STRINGS: YES
                 SWIFT_VERSION: 5.0
                 TARGETED_DEVICE_FAMILY: 1
-        sources: Sources/
+        sources:
+            - iTraveller/COMMON
+            - iTraveller/UA
