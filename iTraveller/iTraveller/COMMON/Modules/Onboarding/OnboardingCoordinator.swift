@@ -2,19 +2,27 @@ import Swinject
 import UIKit
 
 class OnboardingCoordinator {
-    unowned var rootNavigationContoller: UINavigationController!
     private let container: Container
     private let onboardingPageCountProvider: OnboardingPageCountProvider
-
-    private var page = 1
+    private let coordinatorBuilder: CoordinatorBuilder
 
     init(
         container: Container,
-        onboardingPageCountProvider: OnboardingPageCountProvider
+        onboardingPageCountProvider: OnboardingPageCountProvider,
+        coordinatorBuilder: CoordinatorBuilder
     ) {
         self.container = container
         self.onboardingPageCountProvider = onboardingPageCountProvider
+        self.coordinatorBuilder = coordinatorBuilder
     }
+
+    private var rootNavigationController: UINavigationController!
+
+    func inject(rootNavigationController: UINavigationController) {
+        self.rootNavigationController = rootNavigationController
+    }
+
+    private var page = 1
 
 }
 
@@ -22,7 +30,7 @@ extension OnboardingCoordinator: Coordinator {
     func start(animated: Bool) {
         let viewController: OnboardingViewController = container.autoResolve()
         viewController.setPage(page)
-        rootNavigationContoller.setViewControllers([viewController], animated: animated)
+        rootNavigationController.setViewControllers([viewController], animated: animated)
     }
 }
 
@@ -31,7 +39,8 @@ extension OnboardingCoordinator {
         page += 1
 
         if page > onboardingPageCountProvider.getPagesCount() {
-            print("finish onboarding")
+            coordinatorBuilder.buildTabBarCoordinator(rootNavigationController: rootNavigationController)
+                .start(animated: true)
             AppData.onboardingPassed = true
         } else {
             start(animated: true)

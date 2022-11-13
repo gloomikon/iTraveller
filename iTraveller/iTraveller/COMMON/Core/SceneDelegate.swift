@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func setupCoordinator(with window: UIWindow) -> Coordinator {
-        let coordinator: AppCoordinator = Assembly.shared.container.autoResolve()
-        coordinator.window = window
+        let coordinatorBuilder: CoordinatorBuilder = Assembly.shared.container.autoResolve()
+        let coordinator = coordinatorBuilder.buildAppCoordinator(window: window)
 
         return coordinator
     }

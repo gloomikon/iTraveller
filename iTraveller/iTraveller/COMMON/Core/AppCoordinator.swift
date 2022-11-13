@@ -3,13 +3,18 @@ import UIKit
 class AppCoordinator {
 
     // MARK: - Injected properties
-    private let onboardingCoordinator: OnboardingCoordinator
+    private let coordinatorBuilder: CoordinatorBuilder
 
-    init(onboardingCoordinator: OnboardingCoordinator) {
-        self.onboardingCoordinator = onboardingCoordinator
+    init(coordinatorBuilder: CoordinatorBuilder) {
+        self.coordinatorBuilder = coordinatorBuilder
+    }
+    
+    private var window: UIWindow!
+
+    func inject(window: UIWindow) {
+        self.window = window
     }
 
-    var window: UIWindow!
 
     // MARK: - Private properties
     private let navigationController = UINavigationController()
@@ -20,15 +25,14 @@ extension AppCoordinator: Coordinator {
         window.rootViewController = navigationController
         navigationController.navigationBar.tintColor = .primary800
         window.makeKeyAndVisible()
+        navigationController.navigationBar.isHidden = true
 
-//        if AppData.onboardingPassed {
-        onboardingCoordinator.rootNavigationContoller = navigationController
-        onboardingCoordinator.start(animated: animated)
-//            coordinatorBuilder.buildNotesListCoordinator(rootNavigationContoller: navigationController)
-//                .start(animated: animated)
-//        } else {
-//            coordinatorBuilder.buildOnboardingCoordinator(rootNavigationContoller: navigationController)
-//                .start(animated: animated)
-//        }
+        if AppData.onboardingPassed {
+        coordinatorBuilder.buildOnboardingCoordinator(rootNavigationController: navigationController)
+            .start(animated: animated)
+        } else {
+            coordinatorBuilder.buildTabBarCoordinator(rootNavigationController: navigationController)
+                .start(animated: animated)
+        }
     }
 }

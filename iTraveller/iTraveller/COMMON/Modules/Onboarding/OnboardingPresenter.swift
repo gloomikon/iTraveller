@@ -1,14 +1,13 @@
 class OnboardingPresenter {
 
-    private var view: OnboardingViewController!
-    private var coordinator: OnboardingCoordinator!
     private let onboardingInfoProvider: OnboardingInfoProvider
 
     init(onboardingInfoProvider: OnboardingInfoProvider) {
         self.onboardingInfoProvider = onboardingInfoProvider
     }
-    
-    var page: Int!
+
+    private var view: OnboardingViewController!
+    private var coordinator: OnboardingCoordinator!
 
     func inject(
         view: OnboardingViewController,
@@ -17,6 +16,8 @@ class OnboardingPresenter {
         self.view = view
         self.coordinator = coordinator
     }
+
+    var page: Int!
 }
 
 extension OnboardingPresenter {

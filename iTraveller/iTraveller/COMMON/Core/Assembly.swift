@@ -21,21 +21,11 @@ extension SceneDelegate {
 
     func registerDependencies(for container: Container) {
         container.register(Container.self) { _ in Assembly.shared.container }
-
+        container.autoregister(CoordinatorBuilder.self, initializer: CoordinatorBuilder.init)
         container.autoregister(AppCoordinator.self, initializer: AppCoordinator.init)
-
         container.autoregister(OnboardingInfoProvider.self, initializer: OnboardingInfoProvider.init)
-
-        container.register(OnboardingCoordinator.self) { resolver in
-            let container = resolver ~> Container.self
-            let onboardingPageCountProvider = resolver ~> OnboardingPageCountProvider.self
-
-            return OnboardingCoordinator(
-                container: container,
-                onboardingPageCountProvider: onboardingPageCountProvider
-            )
-        }
-        .inObjectScope(.container)
+        container.autoregister(OnboardingCoordinator.self, initializer: OnboardingCoordinator.init)
+            .inObjectScope(.container)
 
         container.register(OnboardingPresenter.self) { resolver in
             let onboardingInfoProvider = resolver ~> OnboardingInfoProvider.self
@@ -52,8 +42,12 @@ extension SceneDelegate {
         }
 
         container.autoregister(OnboardingViewController.self, initializer: OnboardingViewController.init(presenter:))
-        
         container.autoregister(OnboardingPageCountProvider.self, initializer: OnboardingPageCountProvider.init)
+        container.autoregister(TabBarCoordinator.self, initializer: TabBarCoordinator.init)
+        container.autoregister(DiscoverCoordinator.self, initializer: DiscoverCoordinator.init)
+        container.autoregister(RouteCoordinator.self, initializer: RouteCoordinator.init)
+        container.autoregister(FavoritesCoordinator.self, initializer: FavoritesCoordinator.init)
 
+        finishDependenciesRegistration(for: container)
     }
 }
