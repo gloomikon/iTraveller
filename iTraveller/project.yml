@@ -1,5 +1,13 @@
 name: iTraveller
 
+packages:
+    Swinject:
+        github: Swinject/Swinject
+        from: 2.8.0
+    SwinjectAutoregistration:
+        github: Swinject/SwinjectAutoregistration
+        from: 2.8.0
+
 configs:
     Debug: debug
     Release: release
@@ -73,39 +81,63 @@ options:
     createItermediateGroups: true
     deploymentTargets:
         iOS: 13.0
+    useBaseInternationalization: false
 
 fileGroups:
     - project.yml
+
+settingGroups:
+    base_target_settings:
+            ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+            ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+            CODE_SIGN_STYLE: Automatic
+            DEVELOPMENT_TEAM: LA74W2Y6CY
+            GENERATE_INFOPLIST_FILE: YES
+            INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+            INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen.storyboard
+            INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+            IPHONEOS_DEPLOYMENT_TARGET: 13.0
+            LD_RUNPATH_SEARCH_PATHS:
+                - $(inherited)
+                - "@executable_path/Frameworks"
+            PRODUCT_NAME: $(TARGET_NAME)
+            SUPPORTED_PLATFORMS: iphoneos iphonesimulator
+            SUPPORTS_MACCATALYST: NO
+            SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+            SWIFT_EMIT_LOC_STRINGS: YES
+            SWIFT_VERSION: 5.0
+            TARGETED_DEVICE_FAMILY: 1
 
 targets:
     iTravellerUA:
         type: application
         platform: iOS
         settings:
+            groups:
+                - base_target_settings
             base:
-                ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-                ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-                CODE_SIGN_STYLE: Automatic
                 CURRENT_PROJECT_VERSION: 1
-                DEVELOPMENT_TEAM: LA74W2Y6CY
-                GENERATE_INFOPLIST_FILE: YES
-                INFOPLIST_FILE: iTraveller/UA/Info.plist
-                INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
-                INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen.storyboard
-                INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
-                IPHONEOS_DEPLOYMENT_TARGET: 13.0
-                LD_RUNPATH_SEARCH_PATHS:
-                    - $(inherited)
-                    - "@executable_path/Frameworks"
+                INFOPLIST_FILE: iTraveller/UA/Resources/Info.plist
                 MARKETING_VERSION: 1.0
-                PRODUCT_BUNDLE_IDENTIFIER: com.gloomikon.iTravellerUA
-                PRODUCT_NAME: $(TARGET_NAME)
-                SUPPORTED_PLATFORMS: iphoneos iphonesimulator
-                SUPPORTS_MACCATALYST: NO
-                SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
-                SWIFT_EMIT_LOC_STRINGS: YES
-                SWIFT_VERSION: 5.0
-                TARGETED_DEVICE_FAMILY: 1
         sources:
             - iTraveller/COMMON
             - iTraveller/UA
+        dependencies:
+            - package: Swinject
+            - package: SwinjectAutoregistration
+    iTravellerPL:
+        type: application
+        platform: iOS
+        settings:
+            groups:
+                - base_target_settings
+            base:
+                CURRENT_PROJECT_VERSION: 1
+                INFOPLIST_FILE: iTraveller/PL/Resources/Info.plist
+                MARKETING_VERSION: 1.0
+        sources:
+            - iTraveller/COMMON
+            - iTraveller/PL
+        dependencies:
+            - package: Swinject
+            - package: SwinjectAutoregistration
