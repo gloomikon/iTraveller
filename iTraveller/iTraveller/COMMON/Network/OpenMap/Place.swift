@@ -1,0 +1,3 @@
+struct Place: Decodable {
+    
+}

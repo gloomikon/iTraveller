@@ -20,33 +20,50 @@ extension SceneDelegate {
     }
 
     func registerDependencies(for container: Container) {
+
+        // MARK: - Core
+
         container.register(Container.self) { _ in Assembly.shared.container }
         container.autoregister(CoordinatorBuilder.self, initializer: CoordinatorBuilder.init)
         container.autoregister(AppCoordinator.self, initializer: AppCoordinator.init)
+        container.autoregister(TabBarCoordinator.self, initializer: TabBarCoordinator.init)
+
+        // MARK: - Onboarding
+
         container.autoregister(OnboardingInfoProvider.self, initializer: OnboardingInfoProvider.init)
         container.autoregister(OnboardingCoordinator.self, initializer: OnboardingCoordinator.init)
             .inObjectScope(.container)
 
-        container.register(OnboardingPresenter.self) { resolver in
-            let onboardingInfoProvider = resolver ~> OnboardingInfoProvider.self
-
-            return OnboardingPresenter(onboardingInfoProvider: onboardingInfoProvider)
-        }.initCompleted { resolver, presenter in
-            let view = resolver ~> OnboardingViewController.self
-            let coordinator = resolver ~> OnboardingCoordinator.self
-
-            presenter.inject(
-                view: view,
-                coordinator: coordinator
-            )
-        }
-
+        container.autoregister(OnboardingPresenter.self, initializer: OnboardingPresenter.init)
+            .initCompleted { resolver, presenter in
+                presenter.inject(
+                    view: resolver.autoResolve(),
+                    coordinator: resolver.autoResolve()
+                )
+            }
         container.autoregister(OnboardingViewController.self, initializer: OnboardingViewController.init(presenter:))
         container.autoregister(OnboardingPageCountProvider.self, initializer: OnboardingPageCountProvider.init)
-        container.autoregister(TabBarCoordinator.self, initializer: TabBarCoordinator.init)
+
+        // MARK: - Discover
+
         container.autoregister(DiscoverCoordinator.self, initializer: DiscoverCoordinator.init)
+        container.autoregister(DiscoverViewController.self, initializer: DiscoverViewController.init)
+        container.autoregister(DiscoverPresenter.self, initializer: DiscoverPresenter.init)
+            .initCompleted { resolver, presenter in
+                presenter.inject(
+                    view: resolver.autoResolve()
+                )
+            }
+
+        // MARK: - Route
+
         container.autoregister(RouteCoordinator.self, initializer: RouteCoordinator.init)
+
+        // MARK: - Favorites
+
         container.autoregister(FavoritesCoordinator.self, initializer: FavoritesCoordinator.init)
+
+        // MARK: - Target specific
 
         finishDependenciesRegistration(for: container)
     }

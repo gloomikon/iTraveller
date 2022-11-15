@@ -15,7 +15,6 @@ class AppCoordinator {
         self.window = window
     }
 
-
     // MARK: - Private properties
     private let navigationController = UINavigationController()
 }
@@ -28,10 +27,10 @@ extension AppCoordinator: Coordinator {
         navigationController.navigationBar.isHidden = true
 
         if AppData.onboardingPassed {
-        coordinatorBuilder.buildOnboardingCoordinator(rootNavigationController: navigationController)
-            .start(animated: animated)
-        } else {
             coordinatorBuilder.buildTabBarCoordinator(rootNavigationController: navigationController)
+                .start(animated: animated)
+        } else {
+            coordinatorBuilder.buildOnboardingCoordinator(rootNavigationController: navigationController)
                 .start(animated: animated)
         }
     }

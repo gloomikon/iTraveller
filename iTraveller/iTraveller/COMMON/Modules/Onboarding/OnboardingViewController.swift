@@ -33,6 +33,8 @@ class OnboardingViewController: UIViewController {
         }
     }
 
+    private let presenter: OnboardingPresenter
+
     init(presenter: OnboardingPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -46,7 +48,6 @@ class OnboardingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private let presenter: OnboardingPresenter
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,6 +1,14 @@
+import Swinject
 import UIKit
 
 class DiscoverCoordinator {
+
+    private let container: Container
+
+    init(container: Container) {
+        self.container = container
+    }
+
     private var rootNavigationController: UINavigationController!
     private var tabBarController: TabBarController!
 
@@ -15,10 +23,10 @@ class DiscoverCoordinator {
 
 extension DiscoverCoordinator: Coordinator {
     func start(animated: Bool) {
-        let viewController = UIViewController()
+        let viewController: DiscoverViewController = container.autoResolve()
         viewController.title = "Discover"
 
-        let navController = UINavigationController(rootViewController: viewController)
+        let navController = NavigationController(rootViewController: viewController)
 
         let name = "globe"
         let tabBarItem = UITabBarItem(
