@@ -27,6 +27,7 @@ extension SceneDelegate {
         container.autoregister(CoordinatorBuilder.self, initializer: CoordinatorBuilder.init)
         container.autoregister(AppCoordinator.self, initializer: AppCoordinator.init)
         container.autoregister(TabBarCoordinator.self, initializer: TabBarCoordinator.init)
+        container.autoregister(OpenMapClient.self, initializer: OpenMapClient.init)
 
         // MARK: - Onboarding
 

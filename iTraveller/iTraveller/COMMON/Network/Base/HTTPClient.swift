@@ -13,7 +13,7 @@ extension HTTPClient {
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
-        urlComponents.queryItems = endpoint.queryParameters?.map { key, value in
+        urlComponents.queryItems = endpoint.fullQueryParameters.map { key, value in
             URLQueryItem(name: key, value: value)
         }
         urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: ",", with: "%2C")
@@ -21,6 +21,8 @@ extension HTTPClient {
         guard let url = urlComponents.url else {
             throw APIError.invalidURL
         }
+
+//        print("🌐 URL: \(url.absoluteString)")
 
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue

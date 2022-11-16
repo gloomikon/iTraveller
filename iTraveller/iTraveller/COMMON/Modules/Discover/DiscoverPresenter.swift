@@ -3,6 +3,12 @@ import MapKit
 
 class DiscoverPresenter {
 
+    private let openMapClient: OpenMapClient
+
+    init(openMapClient: OpenMapClient) {
+        self.openMapClient = openMapClient
+    }
+
     unowned private var view: DiscoverViewController!
 
     func inject(view: DiscoverViewController) {
@@ -15,13 +21,24 @@ class DiscoverPresenter {
 
     func bind() {
         view.currentRegionSubject
-            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
-            .sink { span in
-                // Unlike longitudinal distances, which vary based on the latitude,
-                // one degree of latitude is always approximately 111 kilometers (69 miles).
-                let distance = span.latitudeDelta * 111 * 1000
-                print("Distance = \(distance) meters")
+            .throttle(for: 3, scheduler: RunLoop.main, latest: true)
+            .sink { [weak self] region in
+                let radius = region.span.latitudeDelta * 111 * 1000
+                self?.requstPlaces(longitude: region.center.longitude, latitude: region.center.latitude, radius: radius)
+
             }
             .store(in: &bag)
+    }
+
+    func requstPlaces(longitude: Double, latitude: Double, radius: Double) {
+        Task {
+            do {
+                let places = try await openMapClient.fetchPlaces(longitude: longitude, latitude: latitude, radius: radius, kinds: nil)
+                print(places.count)
+                await view.displayPlacse(places)
+            } catch {
+                print(error)
+            }
+        }
     }
 }

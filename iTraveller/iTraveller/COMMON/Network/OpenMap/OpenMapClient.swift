@@ -1,4 +1,5 @@
 class OpenMapClient: HTTPClient {
+
     func fetchPlaces(
         longitude: Double,
         latitude: Double,

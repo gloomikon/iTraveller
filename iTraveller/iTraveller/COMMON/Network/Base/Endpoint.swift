@@ -16,7 +16,7 @@ extension Endpoint {
     }
 
     var host: String {
-        "api.opentripmap.com/0.1/en/"
+        "api.opentripmap.com"
     }
 
     var headers: [String: String]? {

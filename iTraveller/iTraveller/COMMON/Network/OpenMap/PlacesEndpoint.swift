@@ -4,7 +4,7 @@ enum PlacesEndpoint {
     case radius(longitude: Double, latitude: Double, radius: Double, kinds: [String]?)
     case xid(String)
 
-    var basePath: String { "places" }
+    var basePath: String { "/0.1/en/places" }
 
     var concretePath: String {
         switch self {
@@ -28,15 +28,14 @@ extension PlacesEndpoint: Endpoint {
     var queryParameters: [String : String]? {
         switch self {
         case .radius(let longitude, let latitude, let radius, let kinds):
-            var params = [
+            return [
                 "lon": longitude.description,
                 "lat": latitude.description,
-                "radius": radius.description
+                "radius": radius.description,
+                "format": "json",
+                "kinds": kinds.map { $0.joined(separator: ",") } ?? "interesting_places,tourist_facilities",
+                "rate": "3"
             ]
-            if let kinds {
-                params["kinds"] = kinds.joined(separator: ",")
-            }
-            return params
         case .xid:
             return nil
         }
