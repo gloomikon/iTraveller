@@ -1,5 +1,5 @@
-/// Source:
-/// https://swiftsenpai.com/swift/create-the-perfect-userdefaults-wrapper-using-property-wrapper/
+// Source:
+// https://swiftsenpai.com/swift/create-the-perfect-userdefaults-wrapper-using-property-wrapper/
 import Foundation
 
 @propertyWrapper

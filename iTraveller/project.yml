@@ -124,6 +124,9 @@ targets:
         dependencies:
             - package: Swinject
             - package: SwinjectAutoregistration
+        postCompileScripts:
+            - script: swiftlint
+              name: Swiftlint
     iTravellerPL:
         type: application
         platform: iOS
@@ -140,3 +143,6 @@ targets:
         dependencies:
             - package: Swinject
             - package: SwinjectAutoregistration
+        postCompileScripts:
+            - script: swiftlint
+              name: Swiftlint

@@ -1,3 +1,5 @@
+// swiftlint:disable nesting
+
 enum Kind: String {
     case architecture
     case cultural

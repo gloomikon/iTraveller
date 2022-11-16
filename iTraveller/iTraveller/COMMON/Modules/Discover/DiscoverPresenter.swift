@@ -33,8 +33,12 @@ class DiscoverPresenter {
     func requstPlaces(longitude: Double, latitude: Double, radius: Double) {
         Task {
             do {
-                let places = try await openMapClient.fetchPlaces(longitude: longitude, latitude: latitude, radius: radius, kinds: nil)
-                print(places.count)
+                let places = try await openMapClient.fetchPlaces(
+                    longitude: longitude,
+                    latitude: latitude,
+                    radius: radius,
+                    kinds: nil
+                )
                 await view.displayPlacse(places)
             } catch {
                 print(error)

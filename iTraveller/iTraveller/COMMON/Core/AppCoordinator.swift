@@ -8,7 +8,7 @@ class AppCoordinator {
     init(coordinatorBuilder: CoordinatorBuilder) {
         self.coordinatorBuilder = coordinatorBuilder
     }
-    
+
     private var window: UIWindow!
 
     func inject(window: UIWindow) {

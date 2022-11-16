@@ -16,7 +16,11 @@ extension HTTPClient {
         urlComponents.queryItems = endpoint.fullQueryParameters.map { key, value in
             URLQueryItem(name: key, value: value)
         }
-        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: ",", with: "%2C")
+
+        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(
+            of: ",",
+            with: "%2C"
+        )
 
         guard let url = urlComponents.url else {
             throw APIError.invalidURL

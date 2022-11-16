@@ -25,7 +25,7 @@ extension PlacesEndpoint: Endpoint {
         .get
     }
 
-    var queryParameters: [String : String]? {
+    var queryParameters: [String: String]? {
         switch self {
         case .radius(let longitude, let latitude, let radius, let kinds):
             return [
