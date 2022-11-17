@@ -48,6 +48,7 @@ extension SceneDelegate {
         // MARK: - Discover
 
         container.autoregister(DiscoverCoordinator.self, initializer: DiscoverCoordinator.init)
+            .inObjectScope(.container)
         container.autoregister(DiscoverViewController.self, initializer: DiscoverViewController.init)
         container.autoregister(DiscoverPresenter.self, initializer: DiscoverPresenter.init)
             .initCompleted { resolver, presenter in
@@ -59,10 +60,12 @@ extension SceneDelegate {
         // MARK: - Route
 
         container.autoregister(RouteCoordinator.self, initializer: RouteCoordinator.init)
+            .inObjectScope(.container)
 
         // MARK: - Favorites
 
         container.autoregister(FavoritesCoordinator.self, initializer: FavoritesCoordinator.init)
+            .inObjectScope(.container)
 
         // MARK: - Target specific
 

@@ -1,6 +1,6 @@
 // swiftlint:disable nesting
 
-enum Kind: String {
+enum PlaceKind: String, Decodable, CaseIterable {
     case architecture
     case cultural
     case historic
@@ -8,13 +8,23 @@ enum Kind: String {
     case religion
     case sport
     case touristFacilities = "tourist_facilities"
+
+    case unknown = "pin_placeholder"
+
+    var imageName: String {
+        rawValue
+    }
 }
 
 struct Place: Decodable {
     let xid: String
     let name: String
-    let kinds: [Kind]
+    let kinds: [PlaceKind]
     let point: Point
+
+    var mainKind: PlaceKind {
+        kinds.first ?? .unknown
+    }
 
     enum CodingKeys: String, CodingKey {
         case xid
@@ -28,7 +38,7 @@ struct Place: Decodable {
         xid = try container.decode(String.self, forKey: CodingKeys.xid)
         name = try container.decode(String.self, forKey: CodingKeys.name)
         let kinds = try container.decode(String.self, forKey: CodingKeys.kinds)
-        self.kinds = kinds.split(separator: ",").map(String.init).compactMap { Kind(rawValue: $0)}
+        self.kinds = kinds.split(separator: ",").map(String.init).compactMap { PlaceKind(rawValue: $0)}
         point = try container.decode(Point.self, forKey: CodingKeys.point)
     }
 }

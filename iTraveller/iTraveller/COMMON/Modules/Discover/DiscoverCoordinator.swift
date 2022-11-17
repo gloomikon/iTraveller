@@ -44,3 +44,9 @@ extension DiscoverCoordinator: Coordinator {
         }
     }
 }
+
+extension DiscoverCoordinator {
+    func navigateToPlaceInfo(xid: String) {
+        // TODO: - Make navigation
+    }
+}

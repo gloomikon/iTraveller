@@ -4,14 +4,16 @@ class OpenMapClient: HTTPClient {
         longitude: Double,
         latitude: Double,
         radius: Double,
-        kinds: [String]?
+        kinds: [String]?,
+        limit: Int
     ) async throws -> [Place] {
         try await sendRequest(
             endpoint: PlacesEndpoint.radius(
                 longitude: longitude,
                 latitude: latitude,
                 radius: radius,
-                kinds: kinds
+                kinds: kinds,
+                limit: limit
             ),
             responseModel: [Place].self
         )
