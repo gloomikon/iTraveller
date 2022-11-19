@@ -1,9 +1,9 @@
 import UIKit
 
 public extension UIViewController {
-    var topParent: UIViewController? {
+    var topParent: UIViewController {
         guard var topParent = parent else {
-            return nil
+            return self
         }
 
         while topParent.parent != nil {

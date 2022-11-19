@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="iTravellerPL" customModuleProvider="target">
+            <connections>
+                <outlet property="animationView" destination="Kd8-jg-osF" id="ydP-mn-N04"/>
+                <outlet property="containerView" destination="iN0-l3-epB" id="6W9-HI-0pr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kd8-jg-osF" customClass="LottieAnimationView" customModule="Lottie">
+                    <rect key="frame" x="75" y="302" width="240" height="240"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Kd8-jg-osF" secondAttribute="height" id="zMh-VH-CMd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Kd8-jg-osF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="75" id="ZrH-lZ-zpy"/>
+                <constraint firstItem="Kd8-jg-osF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="m2P-vN-hdM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Kd8-jg-osF" secondAttribute="trailing" constant="75" id="viw-6J-hph"/>
+                <constraint firstItem="Kd8-jg-osF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wYt-Ta-XZf"/>
+            </constraints>
+            <point key="canvasLocation" x="17" y="-12"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

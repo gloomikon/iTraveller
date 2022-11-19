@@ -52,6 +52,7 @@ extension PlaceInfoPresenter {
                 )
 
                 await self.view.display(viewState)
+                await view.setLoadingEnabled(false)
             } catch {
                 await view.showToast(type: .error, text: "error_something_went_wrong".localized)
             }

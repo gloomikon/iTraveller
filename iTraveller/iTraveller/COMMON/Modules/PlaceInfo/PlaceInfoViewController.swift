@@ -73,6 +73,7 @@ class PlaceInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
+        setLoadingEnabled(true)
 
         presenter.viewDidLoad()
     }

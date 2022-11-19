@@ -3,7 +3,7 @@ import KUIKit
 
 extension UIViewController {
     func showToast(type: ToastType, text: String) {
-        guard let view = topParent?.view else {
+        guard let view = topParent.view else {
             return
         }
 
@@ -43,5 +43,33 @@ extension UIViewController {
                 toast.layer.opacity = 0
             }
         }
+    }
+
+    func setLoadingEnabled(_ enabled: Bool) {
+        guard let view = topParent.view else {
+            return
+        }
+
+        if enabled {
+            let loadingView = LoadingView()
+            view.addSubview(loadingView)
+            NSLayoutConstraint.activate([
+                loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+                loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+
+            loadingView.show()
+        } else {
+            guard let loadingView = view.subviews.first(where: { $0 is LoadingView }) as? LoadingView else {
+                return
+            }
+
+            loadingView.hide { _ in
+                loadingView.removeFromSuperview()
+            }
+        }
+
     }
 }
