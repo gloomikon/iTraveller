@@ -1,3 +1,4 @@
+import KUIKit
 import UIKit
 
 class PlaceInfoPresenter {
@@ -32,9 +33,6 @@ extension PlaceInfoPresenter {
             do {
                 let placeInfo = try await self.openMapClient.fetchPlaceInfo(with: xid)
 
-                print(placeInfo.kinds)
-                print(placeInfo.description)
-
                 let imageData = try? await self.openMapClient.fetchImageData(from: placeInfo.image)
 
                 let image = imageData.map {
@@ -53,11 +51,9 @@ extension PlaceInfoPresenter {
                     description: placeInfo.description
                 )
 
-                print(viewState.kinds)
-
                 await self.view.display(viewState)
             } catch {
-                print(error)
+                await view.showToast(type: .error, text: "error_something_went_wrong".localized)
             }
         }
     }

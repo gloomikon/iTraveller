@@ -1,3 +1,5 @@
+// swiftlint:disable nesting
+
 public struct PlaceInfo: Decodable {
     public let kinds: String
     public let point: Point

@@ -13,3 +13,5 @@
 "religion" = "Religion";
 "sport" = "Sport";
 "touristFacilities" = "Tourist facilities";
+
+"error_something_went_wrong" = "Something went wrong!";
