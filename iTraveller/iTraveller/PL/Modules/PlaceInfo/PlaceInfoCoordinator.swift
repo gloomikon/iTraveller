@@ -7,5 +7,3 @@ extension PlaceInfoCoordinator: CoordinatorTemplate {
         rootNavigationController.setViewControllers([viewController], animated: animated)
     }
 }
-
-extension PlaceInfoCoordinator: Coordinator { }

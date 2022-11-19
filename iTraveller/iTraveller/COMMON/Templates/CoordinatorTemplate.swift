@@ -1,11 +1,11 @@
 import UIKit
 
-protocol CoordinatorTemplate: AnyObject {
+protocol CoordinatorTemplate: Coordinator {
     func createModule() -> UIViewController
     func displayModule(with viewController: UIViewController, animated: Bool)
 }
 
-extension Coordinator where Self: CoordinatorTemplate {
+extension CoordinatorTemplate {
     func start(animated: Bool) {
         let viewController = createModule()
         displayModule(with: viewController, animated: animated)
