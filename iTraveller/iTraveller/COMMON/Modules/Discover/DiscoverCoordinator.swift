@@ -4,9 +4,14 @@ import UIKit
 class DiscoverCoordinator {
 
     private let container: Container
+    private let coordinatorBuilder: CoordinatorBuilder
 
-    init(container: Container) {
+    init(
+        container: Container,
+        coordinatorBuilder: CoordinatorBuilder
+    ) {
         self.container = container
+        self.coordinatorBuilder = coordinatorBuilder
     }
 
     private var rootNavigationController: UINavigationController!
@@ -47,6 +52,9 @@ extension DiscoverCoordinator: Coordinator {
 
 extension DiscoverCoordinator {
     func navigateToPlaceInfo(xid: String) {
-        // TODO: - Make navigation
+        coordinatorBuilder.buildPlaceInfoCoordinator(
+            rootNavigationController: rootNavigationController
+        )
+        .start(animated: true)
     }
 }

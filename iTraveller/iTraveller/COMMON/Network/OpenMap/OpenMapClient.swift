@@ -19,10 +19,10 @@ class OpenMapClient: HTTPClient {
         )
     }
 
-    func fetchPlace(with xid: String) async throws -> Place {
+    func fetchPlaceInfo(with xid: String) async throws -> PlaceInfo {
         try await sendRequest(
             endpoint: PlacesEndpoint.xid(xid),
-            responseModel: Place.self
+            responseModel: PlaceInfo.self
         )
     }
 }

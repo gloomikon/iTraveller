@@ -1,5 +1,3 @@
-// swiftlint:disable nesting
-
 enum PlaceKind: String, Decodable, CaseIterable {
     case architecture
     case cultural
@@ -40,17 +38,5 @@ struct Place: Decodable {
         let kinds = try container.decode(String.self, forKey: CodingKeys.kinds)
         self.kinds = kinds.split(separator: ",").map(String.init).compactMap { PlaceKind(rawValue: $0)}
         point = try container.decode(Point.self, forKey: CodingKeys.point)
-    }
-}
-
-extension Place {
-    struct Point: Decodable {
-        let longitude: Double
-        let latitude: Double
-
-        enum CodingKeys: String, CodingKey {
-            case longitude = "lon"
-            case latitude = "lat"
-        }
     }
 }

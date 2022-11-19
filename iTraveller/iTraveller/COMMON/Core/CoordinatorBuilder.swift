@@ -61,4 +61,14 @@ class CoordinatorBuilder {
         )
         return coordinator
     }
+
+    func buildPlaceInfoCoordinator(
+        rootNavigationController: UINavigationController
+    ) -> PlaceInfoCoordinator {
+        let coordinator: PlaceInfoCoordinator = container.autoResolve()
+        coordinator.inject(
+            rootNavigationController: rootNavigationController
+        )
+        return coordinator
+    }
 }

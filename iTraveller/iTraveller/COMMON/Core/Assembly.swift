@@ -57,6 +57,18 @@ extension SceneDelegate {
                 )
             }
 
+        // MARK: - Place Info
+
+        container.autoregister(PlaceInfoCoordinator.self, initializer: PlaceInfoCoordinator.init)
+            .inObjectScope(.container)
+        container.autoregister(PlaceInfoViewController.self, initializer: PlaceInfoViewController.init)
+        container.autoregister(PlaceInfoPresenter.self, initializer: PlaceInfoPresenter.init)
+            .initCompleted { resolver, presenter in
+                presenter.inject(
+                    view: resolver.autoResolve()
+                )
+            }
+
         // MARK: - Route
 
         container.autoregister(RouteCoordinator.self, initializer: RouteCoordinator.init)

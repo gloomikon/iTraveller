@@ -56,6 +56,5 @@ class DiscoverPresenter {
 extension DiscoverPresenter {
     func navigateToPlaceInfo(xid: String) {
         coordinator.navigateToPlaceInfo(xid: xid)
-        print(xid)
     }
 }
