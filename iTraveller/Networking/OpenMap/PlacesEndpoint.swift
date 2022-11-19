@@ -1,6 +1,6 @@
 import Foundation
 
-enum PlacesEndpoint {
+public enum PlacesEndpoint {
     case radius(longitude: Double, latitude: Double, radius: Double, kinds: [String]?, limit: Int)
     case xid(String)
 
@@ -17,15 +17,15 @@ enum PlacesEndpoint {
 }
 
 extension PlacesEndpoint: Endpoint {
-    var path: String {
+    public var path: String {
         [basePath, concretePath].joined(separator: "/")
     }
 
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         .get
     }
 
-    var queryParameters: [String: String]? {
+    public var queryParameters: [String: String]? {
         switch self {
         case .radius(let longitude, let latitude, let radius, let kinds, let limit):
             return [

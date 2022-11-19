@@ -4,6 +4,7 @@ class PlaceInfoCoordinator: BasePlaceInfoCoordinator { }
 
 extension PlaceInfoCoordinator: CoordinatorTemplate {
     func displayModule(with viewController: UIViewController, animated: Bool) {
-        rootNavigationController.setViewControllers([viewController], animated: animated)
+//        viewController.navigationController?.isNavigationBarHidden = false
+        rootNavigationController.pushViewController(viewController, animated: animated)
     }
 }
