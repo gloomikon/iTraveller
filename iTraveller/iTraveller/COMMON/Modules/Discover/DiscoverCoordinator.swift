@@ -24,6 +24,8 @@ class DiscoverCoordinator {
         self.rootNavigationController = rootNavigationController
         self.tabBarController = tabBarController
     }
+
+    private unowned var discoverNavigationController: UINavigationController!
 }
 
 extension DiscoverCoordinator: Coordinator {
@@ -32,7 +34,7 @@ extension DiscoverCoordinator: Coordinator {
         viewController.title = "Discover"
 
         let navController = NavigationController(rootViewController: viewController)
-
+        discoverNavigationController = navController
         let name = "globe"
         let tabBarItem = UITabBarItem(
             title: "Discrover",
@@ -53,7 +55,8 @@ extension DiscoverCoordinator: Coordinator {
 extension DiscoverCoordinator {
     func navigateToPlaceInfo(xid: String) {
         coordinatorBuilder.buildPlaceInfoCoordinator(
-            rootNavigationController: rootNavigationController
+            rootNavigationController: discoverNavigationController,
+            xid: xid
         )
         .start(animated: true)
     }

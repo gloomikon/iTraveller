@@ -112,12 +112,17 @@ targets:
         type: library.static
         platform: iOS
         sources:
-            - iTraveller/KFoundation
+            - KFoundation
     KUIKit:
         type: library.static
         platform: iOS
         sources:
-            - iTraveller/KUIKit
+            - KUIKit
+    Networking:
+        type: library.static
+        platform: iOS
+        sources:
+            - Networking
     iTravellerUA:
         type: application
         platform: iOS
@@ -136,6 +141,7 @@ targets:
             - package: SwinjectAutoregistration
             - target: KFoundation
             - target: KUIKit
+            - target: Networking
         postCompileScripts:
             - script: swiftlint
               name: Swiftlint
@@ -157,6 +163,7 @@ targets:
             - package: SwinjectAutoregistration
             - target: KFoundation
             - target: KUIKit
+            - target: Networking
         postCompileScripts:
             - script: swiftlint
               name: Swiftlint

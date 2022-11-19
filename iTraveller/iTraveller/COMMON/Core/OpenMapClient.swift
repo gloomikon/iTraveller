@@ -1,3 +1,6 @@
+import Foundation
+import Networking
+
 class OpenMapClient: HTTPClient {
 
     func fetchPlaces(
@@ -7,7 +10,7 @@ class OpenMapClient: HTTPClient {
         kinds: [String]?,
         limit: Int
     ) async throws -> [Place] {
-        try await sendRequest(
+       let places = try await sendRequest(
             endpoint: PlacesEndpoint.radius(
                 longitude: longitude,
                 latitude: latitude,
@@ -15,14 +18,20 @@ class OpenMapClient: HTTPClient {
                 kinds: kinds,
                 limit: limit
             ),
-            responseModel: [Place].self
+            responseModel: [Networking.Place].self
         )
+        return places.map { .init($0) }
     }
 
     func fetchPlaceInfo(with xid: String) async throws -> PlaceInfo {
-        try await sendRequest(
+        let placeInfo = try await sendRequest(
             endpoint: PlacesEndpoint.xid(xid),
-            responseModel: PlaceInfo.self
+            responseModel: Networking.PlaceInfo.self
         )
+        return .init(placeInfo)
+    }
+
+    func fetchImageData(from urlString: String) async throws -> Data {
+        try await sendRequest(from: urlString)
     }
 }

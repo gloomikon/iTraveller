@@ -5,3 +5,11 @@
 "onboarding_title_3" = "Plant your journey";
 "onboarding_subtitle_3" = "Select your favorites places and build routes with them";
 "onboarding_button_title" = "Continue";
+
+"architecture" = "Architecture";
+"cultural" = "Cultural";
+"historic" = "Historic";
+"natural" = "Natural";
+"religion" = "Religion";
+"sport" = "Sport";
+"touristFacilities" = "Tourist facilities";

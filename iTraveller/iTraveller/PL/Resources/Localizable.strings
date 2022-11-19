@@ -3,3 +3,11 @@
 "onboarding_title_2" = "Plan your journey";
 "onboarding_subtitle_2" = "Build routes, buy tickets, book hotels and more";
 "onboarding_button_title" = "Continue";
+
+"architecture" = "Architecture";
+"cultural" = "Cultural";
+"historic" = "Historic";
+"natural" = "Natural";
+"religion" = "Religion";
+"sport" = "Sport";
+"tourist_facilities" = "Tourist facilities";
