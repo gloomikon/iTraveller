@@ -1,6 +1,6 @@
 import UIKit
 
-extension UICollectionViewCell {
+public extension UICollectionViewCell {
     static var nib: UINib {
         let nibName = String(describing: Self.self)
         let nib = UINib(nibName: nibName, bundle: nil)

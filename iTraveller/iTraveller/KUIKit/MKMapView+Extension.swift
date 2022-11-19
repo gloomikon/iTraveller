@@ -1,6 +1,6 @@
 import MapKit
 
-extension MKMapView {
+public extension MKMapView {
     func register(_ markerAnnotation: MKMarkerAnnotationView.Type) {
         self.register(
             markerAnnotation,

@@ -1,4 +1,4 @@
-extension Equatable {
+public extension Equatable {
     func isOne(of items: Self...) -> Bool {
         items.contains(self)
     }

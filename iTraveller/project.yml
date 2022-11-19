@@ -108,6 +108,16 @@ settingGroups:
             TARGETED_DEVICE_FAMILY: 1
 
 targets:
+    KFoundation:
+        type: library.static
+        platform: iOS
+        sources:
+            - iTraveller/KFoundation
+    KUIKit:
+        type: library.static
+        platform: iOS
+        sources:
+            - iTraveller/KUIKit
     iTravellerUA:
         type: application
         platform: iOS
@@ -124,6 +134,8 @@ targets:
         dependencies:
             - package: Swinject
             - package: SwinjectAutoregistration
+            - target: KFoundation
+            - target: KUIKit
         postCompileScripts:
             - script: swiftlint
               name: Swiftlint
@@ -143,6 +155,8 @@ targets:
         dependencies:
             - package: Swinject
             - package: SwinjectAutoregistration
+            - target: KFoundation
+            - target: KUIKit
         postCompileScripts:
             - script: swiftlint
               name: Swiftlint

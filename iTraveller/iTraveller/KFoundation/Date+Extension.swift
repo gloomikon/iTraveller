@@ -1,6 +1,6 @@
 import Foundation
 
-extension Date {
+public extension Date {
     /// Returns a string representation of the date
     ///
     /// Example:

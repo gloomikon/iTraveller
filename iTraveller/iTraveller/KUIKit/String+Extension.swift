@@ -1,6 +1,6 @@
 import UIKit
 
-extension String {
+public extension String {
     var localized: String {
         Bundle.main.localizedString(forKey: self, value: nil, table: nil)
     }

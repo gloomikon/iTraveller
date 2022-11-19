@@ -1,4 +1,4 @@
-import UIKit
+import KUIKit
 
 class OnboardingInfoProvider {
     func getInfo(for page: Int) -> OnboardingInfo {
