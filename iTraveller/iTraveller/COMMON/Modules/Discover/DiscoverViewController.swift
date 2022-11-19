@@ -14,9 +14,21 @@ class DiscoverViewController: UIViewController {
         }
     }
 
-    private let presenter: DiscoverPresenter
+    @IBOutlet private var locationButton: UIButton! {
+        didSet {
+            locationButton.backgroundColor  = .background.withAlphaComponent(0.7)
+            locationButton.layer.cornerRadius = 6
+            locationButton.isHidden = true
+        }
+    }
 
     var currentRegionSubject: PassthroughSubject<MKCoordinateRegion, Never> = .init()
+    private let locationManager = CLLocationManager()
+    private let regionRadiusMeters: Double = 5000
+
+    // MARK: - Injected properties
+
+    private let presenter: DiscoverPresenter
 
     init(presenter: DiscoverPresenter) {
         self.presenter = presenter
@@ -29,7 +41,35 @@ class DiscoverViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        locationManager.do {
+            $0.requestWhenInUseAuthorization()
+            $0.desiredAccuracy = kCLLocationAccuracyBest
+            $0.distanceFilter = kCLDistanceFilterNone
+            $0.startUpdatingLocation()
+        }
+
+        centerMap()
         currentRegionSubject.send(mapView.region)
+
+        if locationManager.authorizationStatus.isOne(of: .authorizedWhenInUse, .authorizedAlways) {
+            locationButton.isHidden = false
+            mapView.showsUserLocation = true
+        }
+    }
+
+    private func centerMap() {
+        let userCoordinate = locationManager.location?.coordinate ?? baseUserCoordinate
+        let region = MKCoordinateRegion(
+            center: userCoordinate,
+            latitudinalMeters: regionRadiusMeters,
+            longitudinalMeters: regionRadiusMeters
+        )
+        mapView.setRegion(region, animated: true)
+    }
+
+    @IBAction func locationButtonTap(_ sender: Any) {
+        centerMap()
     }
 }
 
@@ -45,10 +85,10 @@ extension DiscoverViewController {
 
         mapView.addAnnotations(annonations)
 
-        if let annotations = mapView.annotations as? [PlaceAnnotation] {
-            mapView.removeAnnotations(mapView.annotations)
-            mapView.addAnnotations(Array(Set(annotations)))
-        }
+//        if let annotations = mapView.annotations as? [PlaceAnnotation] {
+//            mapView.removeAnnotations(mapView.annotations)
+//            mapView.addAnnotations(Array(Set(annotations)))
+//        }
     }
 }
 

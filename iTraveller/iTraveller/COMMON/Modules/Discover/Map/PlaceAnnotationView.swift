@@ -17,7 +17,7 @@ class PlaceAnnotationView: MKMarkerAnnotationView {
     /// - Tag: DisplayConfiguration
     override func prepareForDisplay() {
         super.prepareForDisplay()
-        displayPriority = .defaultLow
+        displayPriority = .defaultHigh
         markerTintColor = kind.markerTintColor
         glyphImage = UIImage(named: kind.imageName)
         glyphTintColor = kind.imageColor

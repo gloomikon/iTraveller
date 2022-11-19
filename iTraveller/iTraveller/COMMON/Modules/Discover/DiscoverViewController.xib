@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiscoverViewController" customModule="iTravellerPL" customModuleProvider="target">
             <connections>
+                <outlet property="locationButton" destination="ntp-Ys-dbE" id="6SM-lS-qOX"/>
                 <outlet property="mapView" destination="S8h-6u-jgI" id="8J2-Ht-L79"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,12 +26,26 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
                     <standardMapConfiguration key="preferredConfiguration"/>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntp-Ys-dbE">
+                    <rect key="frame" x="330" y="750" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="egg-jA-cSv"/>
+                        <constraint firstAttribute="height" constant="40" id="ufI-zr-7MN"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="location" catalog="system"/>
+                    <connections>
+                        <action selector="locationButtonTap:" destination="-1" eventType="touchUpInside" id="q46-Tb-fun"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ntp-Ys-dbE" secondAttribute="trailing" constant="20" id="FO0-3w-Oo8"/>
                 <constraint firstItem="S8h-6u-jgI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GMD-8c-zQL"/>
                 <constraint firstItem="S8h-6u-jgI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="R9E-JX-Mgk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ntp-Ys-dbE" secondAttribute="bottom" constant="20" id="VDE-Jm-aHB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="S8h-6u-jgI" secondAttribute="bottom" id="mhx-ZJ-vGI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="S8h-6u-jgI" secondAttribute="trailing" id="pT3-Vf-Jez"/>
             </constraints>
@@ -38,6 +53,7 @@
         </view>
     </objects>
     <resources>
+        <image name="location" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

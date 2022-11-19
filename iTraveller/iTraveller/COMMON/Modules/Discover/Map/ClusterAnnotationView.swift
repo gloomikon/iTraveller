@@ -26,7 +26,7 @@ class ClusterAnnotationView: MKAnnotationView {
             let fractions = PlaceKind.allCases.map { (count(placeKind: $0), $0) }
 
             image = drawRatio(from: fractions, total: totalPlaces)
-            displayPriority = .defaultHigh
+            displayPriority = .defaultLow
         }
     }
 
