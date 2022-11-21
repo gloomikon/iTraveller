@@ -1,0 +1,11 @@
+project: iTraveller
+
+targets:
+    PL:
+    UA:
+    USA:
+        steals:
+            - UA/Resources/*
+            - UA/Core/*.swift
+            - PL/Modules/
+            - PL/Core/CoordinatorBuilder+Extension.swift
