@@ -84,6 +84,7 @@ options:
 
 fileGroups:
     - project.yml
+    - iTraveller.yml
 
 settingGroups:
     base_target_settings:

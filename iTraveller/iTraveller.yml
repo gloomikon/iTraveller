@@ -8,4 +8,5 @@ targets:
             - UA/Resources/*
             - UA/Core/*.swift
             - PL/Modules/
+            - UA/Modules/TabBar/ #override the PL's file
             - PL/Core/CoordinatorBuilder+Extension.swift
