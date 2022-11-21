@@ -108,63 +108,63 @@ settingGroups:
 
 targets:
     KFoundation:
-        type: library.static
         platform: iOS
         sources:
-            - KFoundation
+        - KFoundation
+        type: library.static
     KUIKit:
-        type: library.static
         platform: iOS
         sources:
-            - KUIKit
+        - KUIKit
+        type: library.static
     Networking:
+        platform: iOS
+        sources:
+        - Networking
         type: library.static
-        platform: iOS
-        sources:
-            - Networking
-    iTravellerUA:
-        type: application
-        platform: iOS
-        settings:
-            groups:
-                - base_target_settings
-            base:
-                CURRENT_PROJECT_VERSION: 1
-                INFOPLIST_FILE: iTraveller/UA/Resources/Info.plist
-                MARKETING_VERSION: 1.0
-        sources:
-            - iTraveller/COMMON
-            - iTraveller/UA
-        dependencies:
-            - package: Swinject
-            - package: SwinjectAutoregistration
-            - package: Lottie
-            - target: KFoundation
-            - target: KUIKit
-            - target: Networking
-        postCompileScripts:
-            - script: swiftlint
-              name: Swiftlint
     iTravellerPL:
-        type: application
-        platform: iOS
-        settings:
-            groups:
-                - base_target_settings
-            base:
-                CURRENT_PROJECT_VERSION: 1
-                INFOPLIST_FILE: iTraveller/PL/Resources/Info.plist
-                MARKETING_VERSION: 1.0
-        sources:
-            - iTraveller/COMMON
-            - iTraveller/PL
         dependencies:
-            - package: Swinject
-            - package: SwinjectAutoregistration
-            - package: Lottie
-            - target: KFoundation
-            - target: KUIKit
-            - target: Networking
+        -   package: Swinject
+        -   package: SwinjectAutoregistration
+        -   package: Lottie
+        -   target: KFoundation
+        -   target: KUIKit
+        -   target: Networking
+        platform: iOS
         postCompileScripts:
-            - script: swiftlint
-              name: Swiftlint
+        -   name: Swiftlint
+            script: swiftlint
+        settings:
+            base:
+                CURRENT_PROJECT_VERSION: '1'
+                INFOPLIST_FILE: iTraveller/PL/Resources/Info.plist
+                MARKETING_VERSION: '1.0'
+            groups:
+            - base_target_settings
+        sources:
+        - iTraveller/COMMON
+        - iTraveller/PL
+        type: application
+    iTravellerUA:
+        dependencies:
+        -   package: Swinject
+        -   package: SwinjectAutoregistration
+        -   package: Lottie
+        -   target: KFoundation
+        -   target: KUIKit
+        -   target: Networking
+        platform: iOS
+        postCompileScripts:
+        -   name: Swiftlint
+            script: swiftlint
+        settings:
+            base:
+                CURRENT_PROJECT_VERSION: '1'
+                INFOPLIST_FILE: iTraveller/UA/Resources/Info.plist
+                MARKETING_VERSION: '1.0'
+            groups:
+            - base_target_settings
+        sources:
+        - iTraveller/COMMON
+        - iTraveller/UA
+        type: application
