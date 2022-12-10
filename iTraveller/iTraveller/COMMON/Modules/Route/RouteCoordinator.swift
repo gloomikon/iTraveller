@@ -1,6 +1,13 @@
+import Swinject
 import UIKit
 
 class RouteCoordinator {
+    let container: Container
+
+    init(container: Container) {
+        self.container = container
+    }
+
     private var rootNavigationController: UINavigationController!
     private var tabBarController: TabBarController!
 
@@ -15,10 +22,10 @@ class RouteCoordinator {
 
 extension RouteCoordinator: Coordinator {
     func start(animated: Bool) {
-        let viewController = UIViewController()
+        let viewController: RouteViewContoller = container.autoResolve()
         viewController.title = "Route"
 
-        let navController = UINavigationController(rootViewController: viewController)
+        let navController = NavigationController(rootViewController: viewController)
 
         let name = "arrow.triangle.swap"
         let tabBarItem = UITabBarItem(

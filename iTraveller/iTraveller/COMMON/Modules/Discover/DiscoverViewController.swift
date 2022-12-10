@@ -96,11 +96,6 @@ extension DiscoverViewController {
         }
 
         mapView.addAnnotations(annonations)
-
-//        if let annotations = mapView.annotations as? [PlaceAnnotation] {
-//            mapView.removeAnnotations(mapView.annotations)
-//            mapView.addAnnotations(Array(Set(annotations)))
-//        }
     }
 }
 

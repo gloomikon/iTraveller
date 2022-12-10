@@ -84,7 +84,7 @@ public extension HTTPClient {
     }
 
     private func decode<T: Decodable>(data: Data, for responseModel: T.Type) throws -> T {
-        print(String(decoding: data, as: UTF8.self))
+//        print(String(decoding: data, as: UTF8.self))
         return try JSONDecoder().decode(responseModel, from: data)
     }
 }

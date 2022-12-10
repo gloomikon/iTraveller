@@ -15,3 +15,10 @@
 "tourist_facilities" = "Tourist facilities";
 
 "error_something_went_wrong" = "Something went wrong!";
+
+"airbnb" = "Airbnb";
+"booking" = "Booking";
+"wizzair" = "Wizzair";
+"flixbus" = "Flixbus";
+"busfor" = "Busfor";
+"build_route" = "Build route";

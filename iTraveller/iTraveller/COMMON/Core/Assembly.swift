@@ -88,6 +88,14 @@ extension SceneDelegate {
 
         container.autoregister(RouteCoordinator.self, initializer: RouteCoordinator.init)
             .inObjectScope(.container)
+        container.autoregister(RouteServicesProvider.self, initializer: RouteServicesProvider.init)
+        container.autoregister(RouteViewContoller.self, initializer: RouteViewContoller.init)
+        container.autoregister(RoutePresenter.self, initializer: RoutePresenter.init)
+            .initCompleted { resolver, presenter in
+                presenter.inject(
+                    view: resolver.autoResolve()
+                )
+            }
 
         // MARK: - Favorites
 
