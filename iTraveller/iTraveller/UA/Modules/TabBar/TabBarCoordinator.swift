@@ -18,5 +18,3 @@ class TabBarCoordinator: BaseTabBarCoordinator, TabBarCoordinatorTemplate {
         ]
     }
 }
-
-extension TabBarCoordinator: Coordinator { }

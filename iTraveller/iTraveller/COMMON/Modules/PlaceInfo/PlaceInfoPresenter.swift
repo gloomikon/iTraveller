@@ -44,6 +44,7 @@ extension PlaceInfoPresenter {
                 }
 
                 let viewState = PlaceInfoViewController.ViewState(
+                    xid: placeInfo.xid,
                     image: image,
                     title: placeInfo.name,
                     wikiURL: url,

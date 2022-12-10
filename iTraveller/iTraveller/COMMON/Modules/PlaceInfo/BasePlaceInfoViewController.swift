@@ -1,6 +1,6 @@
 import UIKit
 
-class PlaceInfoViewController: UIViewController {
+class BasePlaceInfoViewController: UIViewController {
 
     private enum Section {
         case main
@@ -77,33 +77,11 @@ class PlaceInfoViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
-}
 
-// MARK: - DiffableDataSource
-extension PlaceInfoViewController {
-    private func makeDataSource() -> DataSource {
-        .init(collectionView: collectionView) { collectionView, indexPath, kind in
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Cell.reuseIdentifier,
-                for: indexPath) as? Cell else {
-                return UICollectionViewCell()
-            }
-            cell.configure(with: kind)
-            return cell
-        }
-    }
-
-    private func applySnapshot(kinds: [PlaceKind], animatingDifferences: Bool) {
-        var snapshot = Snapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(kinds)
-        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
-    }
-}
-
-extension PlaceInfoViewController {
+    // MARK: - Public interface
 
     struct ViewState {
+        let xid: String
         let image: UIImage
         let title: String
         let wikiURL: URL?
@@ -127,5 +105,27 @@ extension PlaceInfoViewController {
         applySnapshot(kinds: viewState.kinds, animatingDifferences: true)
 
         descriptionLabel.text = viewState.description
+    }
+}
+
+// MARK: - DiffableDataSource
+extension BasePlaceInfoViewController {
+    private func makeDataSource() -> DataSource {
+        .init(collectionView: collectionView) { collectionView, indexPath, kind in
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Cell.reuseIdentifier,
+                for: indexPath) as? Cell else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: kind)
+            return cell
+        }
+    }
+
+    private func applySnapshot(kinds: [PlaceKind], animatingDifferences: Bool) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(kinds)
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }

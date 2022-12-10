@@ -108,6 +108,11 @@ settingGroups:
             TARGETED_DEVICE_FAMILY: 1
 
 targets:
+    Analytics:
+        platform: iOS
+        sources:
+        - Analytics
+        type: library.static
     KFoundation:
         platform: iOS
         sources:
@@ -128,6 +133,7 @@ targets:
         -   package: Swinject
         -   package: SwinjectAutoregistration
         -   package: Lottie
+        -   target: Analytics
         -   target: KFoundation
         -   target: KUIKit
         -   target: Networking
@@ -151,6 +157,7 @@ targets:
         -   package: Swinject
         -   package: SwinjectAutoregistration
         -   package: Lottie
+        -   target: Analytics
         -   target: KFoundation
         -   target: KUIKit
         -   target: Networking

@@ -29,8 +29,11 @@ class DiscoverPresenter {
             .throttle(for: 3, scheduler: RunLoop.main, latest: true)
             .sink { [weak self] region in
                 let radius = region.span.latitudeDelta * 111 * 1000 * 2
-                self?.requstPlaces(longitude: region.center.longitude, latitude: region.center.latitude, radius: radius)
-
+                self?.requstPlaces(
+                    longitude: region.center.longitude,
+                    latitude: region.center.latitude,
+                    radius: radius
+                )
             }
             .store(in: &bag)
     }

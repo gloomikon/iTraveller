@@ -1,11 +1,20 @@
 import Swinject
 import UIKit
 
-protocol TabBarCoordinatorTemplate {
+protocol TabBarCoordinatorTemplate: Coordinator {
     func makeTabBarController() -> TabBarController
     func makeCoordinators(with tabBarController: TabBarController) -> [Coordinator]
     func startCoordinators(_ coordinators: [Coordinator], animated: Bool)
     func displayTabBarController(_ tabBarController: TabBarController, animated: Bool)
+}
+
+extension Coordinator where Self: TabBarCoordinatorTemplate {
+    func start(animated: Bool) {
+        let tabBarConroller = makeTabBarController()
+        let coordinators = makeCoordinators(with: tabBarConroller)
+        startCoordinators(coordinators, animated: animated)
+        displayTabBarController(tabBarConroller, animated: animated)
+    }
 }
 
 extension TabBarCoordinatorTemplate {
@@ -15,15 +24,6 @@ extension TabBarCoordinatorTemplate {
 
     func startCoordinators(_ coordinators: [Coordinator], animated: Bool) {
         coordinators.forEach { $0.start(animated: animated)}
-    }
-}
-
-extension Coordinator where Self: TabBarCoordinatorTemplate {
-    func start(animated: Bool) {
-        let tabBarConroller = makeTabBarController()
-        let coordinators = makeCoordinators(with: tabBarConroller)
-        startCoordinators(coordinators, animated: animated)
-        displayTabBarController(tabBarConroller, animated: animated)
     }
 }
 

@@ -15,7 +15,6 @@ struct Storage<T: Codable> {
     var wrappedValue: T {
         get {
             guard let data = UserDefaults.standard.object(forKey: key) as? Data else {
-
                 return defaultValue
             }
 
