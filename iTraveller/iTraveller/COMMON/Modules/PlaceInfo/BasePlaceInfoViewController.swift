@@ -17,6 +17,14 @@ class BasePlaceInfoViewController: UIViewController {
         }
     }
 
+    @IBOutlet private var favoritesButton: UIButton! {
+        didSet {
+            favoritesButton.tintColor = .primary100
+            favoritesButton.backgroundColor = .primary500.withAlphaComponent(0.8)
+            favoritesButton.layer.cornerRadius = 10
+        }
+    }
+
     @IBOutlet private var imageView: UIImageView! {
         didSet {
             imageView.contentMode = .scaleAspectFill
@@ -78,6 +86,10 @@ class BasePlaceInfoViewController: UIViewController {
         presenter.viewDidLoad()
     }
 
+    @IBAction func favoritesButtonTapped(_ sender: Any) {
+        presenter.toggleFavorite()
+    }
+
     // MARK: - Public interface
 
     struct ViewState {
@@ -87,6 +99,7 @@ class BasePlaceInfoViewController: UIViewController {
         let wikiURL: URL?
         let kinds: [PlaceKind]
         let description: String
+        let isFavorite: Bool
     }
 
     func display(_ viewState: ViewState) {
@@ -105,6 +118,8 @@ class BasePlaceInfoViewController: UIViewController {
         applySnapshot(kinds: viewState.kinds, animatingDifferences: true)
 
         descriptionLabel.text = viewState.description
+
+        favoritesButton.setImage(.init(systemName: viewState.isFavorite ? "bookmark.fill" : "bookmark"), for: .normal)
     }
 }
 

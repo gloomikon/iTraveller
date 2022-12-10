@@ -1,3 +1,5 @@
+// swiftlint:disable function_body_length
+
 import Analytics
 import Swinject
 import SwinjectAutoregistration
@@ -95,6 +97,7 @@ extension SceneDelegate {
         // MARK: - Services
         container.autoregister(AnalyticsService.self, initializer: AnalyticsService.init)
         container.autoregister(Analytics.AnalyticsService.self, initializer: Analytics.AnalyticsService.init)
+        container.autoregister(FavoritesProvider.self, initializer: FavoritesProvider.init)
 
         // MARK: - Target specific
 

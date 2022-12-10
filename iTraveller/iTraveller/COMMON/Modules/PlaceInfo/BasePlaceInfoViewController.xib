@@ -14,6 +14,7 @@
                 <outlet property="collectionView" destination="eZe-9d-KaG" id="Bxy-7Q-5By"/>
                 <outlet property="contentView" destination="DUf-9B-5Ng" id="fTR-Su-ohN"/>
                 <outlet property="descriptionLabel" destination="sao-p2-55M" id="vX7-s0-TgM"/>
+                <outlet property="favoritesButton" destination="eZP-Dw-HEg" id="piV-v9-XO6"/>
                 <outlet property="imageView" destination="UDg-Td-egC" id="T31-Cu-IyF"/>
                 <outlet property="infoButton" destination="Kdv-fq-e9O" id="dX5-dY-gFt"/>
                 <outlet property="titleLabel" destination="gze-jX-HBC" id="NN0-ts-NPU"/>
@@ -26,13 +27,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-Td-egC">
-                    <rect key="frame" x="0.0" y="0.0" width="390" height="292.66666666666669"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="292.66666666666669"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="UDg-Td-egC" secondAttribute="height" multiplier="4:3" id="qeV-ti-0rA"/>
                     </constraints>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RD-ZR-iEk">
-                    <rect key="frame" x="0.0" y="292.66666666666669" width="390" height="551.33333333333326"/>
+                    <rect key="frame" x="0.0" y="339.66666666666674" width="390" height="470.33333333333326"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DUf-9B-5Ng" userLabel="Content View">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="646.33333333333337"/>
@@ -89,7 +90,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="ap0-PR-KhV"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdv-fq-e9O">
-                    <rect key="frame" x="330" y="232.66666666666666" width="40" height="39.999999999999972"/>
+                    <rect key="frame" x="330" y="279.66666666666669" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="LVo-Zv-JMz"/>
                         <constraint firstAttribute="width" constant="40" id="ohU-n6-Blu"/>
@@ -97,12 +98,26 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="info.circle.fill" catalog="system"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZP-Dw-HEg">
+                    <rect key="frame" x="330" y="67" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="UpT-tm-plC"/>
+                        <constraint firstAttribute="width" constant="40" id="wSz-cr-hxU"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="info.circle.fill" catalog="system"/>
+                    <connections>
+                        <action selector="favoritesButtonTapped:" destination="-1" eventType="touchUpInside" id="ega-CM-CG8"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="UDg-Td-egC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6vG-fo-egb"/>
+                <constraint firstItem="eZP-Dw-HEg" firstAttribute="trailing" secondItem="UDg-Td-egC" secondAttribute="trailing" constant="-20" id="E7C-qq-707"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3RD-ZR-iEk" secondAttribute="trailing" id="F29-Uo-Aez"/>
+                <constraint firstItem="eZP-Dw-HEg" firstAttribute="top" secondItem="UDg-Td-egC" secondAttribute="top" constant="20" id="Q2w-6B-nqU"/>
                 <constraint firstItem="3RD-ZR-iEk" firstAttribute="top" secondItem="UDg-Td-egC" secondAttribute="bottom" id="WCk-IG-JFh"/>
                 <constraint firstItem="UDg-Td-egC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bQr-La-utE"/>
                 <constraint firstItem="Kdv-fq-e9O" firstAttribute="bottom" secondItem="UDg-Td-egC" secondAttribute="bottom" constant="-20" id="f5j-LJ-OOd"/>
