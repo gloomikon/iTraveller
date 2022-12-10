@@ -15,6 +15,13 @@ class DiscoverViewController: UIViewController {
         }
     }
 
+    @IBOutlet private var filtersButton: UIButton! {
+        didSet {
+            filtersButton.backgroundColor  = .background.withAlphaComponent(0.7)
+            filtersButton.layer.cornerRadius = 6
+        }
+    }
+
     @IBOutlet private var locationButton: UIButton! {
         didSet {
             locationButton.backgroundColor  = .background.withAlphaComponent(0.7)
@@ -69,7 +76,11 @@ class DiscoverViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
 
-    @IBAction func locationButtonTap(_ sender: Any) {
+    @IBAction private func filterButtonTapped(_ sender: Any) {
+        presenter.openFilters()
+    }
+
+    @IBAction private func locationButtonTap(_ sender: Any) {
         centerMap()
     }
 }

@@ -12,6 +12,6 @@
 "natural" = "Natural";
 "religion" = "Religion";
 "sport" = "Sport";
-"touristFacilities" = "Tourist facilities";
+"tourist_facilities" = "Tourist facilities";
 
 "error_something_went_wrong" = "Something went wrong!";

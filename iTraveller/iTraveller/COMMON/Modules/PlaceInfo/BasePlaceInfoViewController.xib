@@ -11,12 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BasePlaceInfoViewController" customModule="iTravellerPL" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="eZe-9d-KaG" id="bxh-vU-4Lt"/>
-                <outlet property="contentView" destination="DUf-9B-5Ng" id="wuB-X6-AYt"/>
-                <outlet property="descriptionLabel" destination="sao-p2-55M" id="Qgb-nK-PCO"/>
-                <outlet property="imageView" destination="UDg-Td-egC" id="CkQ-ba-5Xh"/>
-                <outlet property="infoButton" destination="Kdv-fq-e9O" id="ZhN-43-nIh"/>
-                <outlet property="titleLabel" destination="gze-jX-HBC" id="ugQ-ZZ-MC9"/>
+                <outlet property="collectionView" destination="eZe-9d-KaG" id="Bxy-7Q-5By"/>
+                <outlet property="contentView" destination="DUf-9B-5Ng" id="fTR-Su-ohN"/>
+                <outlet property="descriptionLabel" destination="sao-p2-55M" id="vX7-s0-TgM"/>
+                <outlet property="imageView" destination="UDg-Td-egC" id="T31-Cu-IyF"/>
+                <outlet property="infoButton" destination="Kdv-fq-e9O" id="dX5-dY-gFt"/>
+                <outlet property="titleLabel" destination="gze-jX-HBC" id="NN0-ts-NPU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

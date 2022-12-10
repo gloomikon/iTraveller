@@ -59,7 +59,7 @@ class BasePlaceInfoViewController: UIViewController {
 
     init(presenter: PlaceInfoPresenter) {
         self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: "BasePlaceInfoViewController", bundle: .main)
     }
 
     required init?(coder: NSCoder) {

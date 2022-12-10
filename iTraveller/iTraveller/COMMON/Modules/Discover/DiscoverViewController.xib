@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiscoverViewController" customModule="iTravellerPL" customModuleProvider="target">
             <connections>
+                <outlet property="filtersButton" destination="rd5-Gg-uNi" id="eVE-9j-2n3"/>
                 <outlet property="locationButton" destination="ntp-Ys-dbE" id="6SM-lS-qOX"/>
                 <outlet property="mapView" destination="S8h-6u-jgI" id="8J2-Ht-L79"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,6 +39,18 @@
                         <action selector="locationButtonTap:" destination="-1" eventType="touchUpInside" id="q46-Tb-fun"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd5-Gg-uNi">
+                    <rect key="frame" x="330" y="67" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="1Ud-Ys-CdD"/>
+                        <constraint firstAttribute="width" constant="40" id="Ul0-na-iiq"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system"/>
+                    <connections>
+                        <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="KrA-0b-KHe"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,13 +59,16 @@
                 <constraint firstItem="S8h-6u-jgI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GMD-8c-zQL"/>
                 <constraint firstItem="S8h-6u-jgI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="R9E-JX-Mgk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ntp-Ys-dbE" secondAttribute="bottom" constant="20" id="VDE-Jm-aHB"/>
+                <constraint firstItem="rd5-Gg-uNi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="lCg-qz-ylS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="S8h-6u-jgI" secondAttribute="bottom" id="mhx-ZJ-vGI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="S8h-6u-jgI" secondAttribute="trailing" id="pT3-Vf-Jez"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rd5-Gg-uNi" secondAttribute="trailing" constant="20" id="qaz-tv-B5L"/>
             </constraints>
             <point key="canvasLocation" x="102" y="9"/>
         </view>
     </objects>
     <resources>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="location" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -1,14 +1,14 @@
 import Analytics
 
-class AnalyticsSerive {
+class AnalyticsService {
 
-    private let analyticsSerivce: Analytics.AnalyticsService
+    private let analyticsService: Analytics.AnalyticsService
 
-    init(analyticsSerivce: Analytics.AnalyticsService) {
-        self.analyticsSerivce = analyticsSerivce
+    init(analyticsService: Analytics.AnalyticsService) {
+        self.analyticsService = analyticsService
     }
 
     func send(_ event: iTravallerEvent) {
-        analyticsSerivce.send(event)
+        analyticsService.send(event)
     }
 }

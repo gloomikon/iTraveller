@@ -2,10 +2,10 @@ import UIKit
 
 class PlaceInfoViewController: BasePlaceInfoViewController {
 
-    private let analyticsService: AnalyticsSerive
+    private let analyticsService: AnalyticsService
 
     init(
-        analyticsService: AnalyticsSerive,
+        analyticsService: AnalyticsService,
         presenter: PlaceInfoPresenter
     ) {
         self.analyticsService = analyticsService

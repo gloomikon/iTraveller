@@ -60,4 +60,11 @@ extension DiscoverCoordinator {
         )
         .start(animated: true)
     }
+
+    func openFilters() {
+        coordinatorBuilder.buildFilterCoordinator(
+            rootNavigationController: rootNavigationController
+        )
+        .start(animated: true)
+    }
 }

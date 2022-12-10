@@ -60,4 +60,8 @@ extension DiscoverPresenter {
     func navigateToPlaceInfo(xid: String) {
         coordinator.navigateToPlaceInfo(xid: xid)
     }
+
+    func openFilters() {
+        coordinator.openFilters()
+    }
 }

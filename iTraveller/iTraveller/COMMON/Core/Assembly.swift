@@ -1,3 +1,4 @@
+import Analytics
 import Swinject
 import SwinjectAutoregistration
 
@@ -57,6 +58,18 @@ extension SceneDelegate {
                 )
             }
 
+        // MARK: - Filters
+
+        container.autoregister(FilterCoordinator.self, initializer: FilterCoordinator.init)
+            .inObjectScope(.container)
+        container.autoregister(FilterViewController.self, initializer: FilterViewController.init)
+        container.autoregister(FilterPresenter.self, initializer: FilterPresenter.init)
+            .initCompleted { resolver, presenter in
+                presenter.inject(
+                    view: resolver.autoResolve()
+                )
+            }
+
         // MARK: - Place Info
 
         container.autoregister(PlaceInfoCoordinator.self, initializer: PlaceInfoCoordinator.init)
@@ -78,6 +91,10 @@ extension SceneDelegate {
 
         container.autoregister(FavoritesCoordinator.self, initializer: FavoritesCoordinator.init)
             .inObjectScope(.container)
+
+        // MARK: - Services
+        container.autoregister(AnalyticsService.self, initializer: AnalyticsService.init)
+        container.autoregister(Analytics.AnalyticsService.self, initializer: Analytics.AnalyticsService.init)
 
         // MARK: - Target specific
 

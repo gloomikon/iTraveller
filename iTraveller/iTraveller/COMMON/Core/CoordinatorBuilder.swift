@@ -73,4 +73,14 @@ class CoordinatorBuilder {
         )
         return coordinator
     }
+
+    func buildFilterCoordinator(
+        rootNavigationController: UINavigationController
+    ) -> FilterCoordinator {
+        let coordinator: FilterCoordinator = container.autoResolve()
+        coordinator.inject(
+            rootNavigationController: rootNavigationController
+        )
+        return coordinator
+    }
 }
