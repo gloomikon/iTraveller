@@ -9,21 +9,28 @@ class BasePlaceInfoCoordinator {
     }
 
     var rootNavigationController: UINavigationController!
-    var xid: String!
+    var xid: String?
+    var placeInfo: PlaceInfo?
 
     func inject(
         rootNavigationController: UINavigationController,
-        xid: String
+        xid: String?,
+        placeInfo: PlaceInfo?
     ) {
         self.rootNavigationController = rootNavigationController
         self.xid = xid
+        self.placeInfo = placeInfo
     }
 }
 
 extension CoordinatorTemplate where Self: BasePlaceInfoCoordinator {
     func createModule() -> UIViewController {
         let viewController: PlaceInfoViewController = container.autoResolve()
-        viewController.set(xid)
+        if let xid {
+            viewController.set(xid)
+        } else if let placeInfo {
+            viewController.set(placeInfo)
+        }
         return viewController
     }
 }

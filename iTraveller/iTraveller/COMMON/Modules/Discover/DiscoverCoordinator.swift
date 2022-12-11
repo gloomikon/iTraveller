@@ -56,7 +56,8 @@ extension DiscoverCoordinator {
     func navigateToPlaceInfo(xid: String) {
         coordinatorBuilder.buildPlaceInfoCoordinator(
             rootNavigationController: discoverNavigationController,
-            xid: xid
+            xid: xid,
+            placeInfo: nil
         )
         .start(animated: true)
     }

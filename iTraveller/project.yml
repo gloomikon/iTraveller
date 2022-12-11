@@ -10,6 +10,9 @@ packages:
     Lottie:
         github: airbnb/lottie-ios
         from: 3.5.0
+    Kingfisher:
+        github: onevcat/Kingfisher
+        from: 7.4.0
 
 settings:
     base:
@@ -133,6 +136,7 @@ targets:
         -   package: Swinject
         -   package: SwinjectAutoregistration
         -   package: Lottie
+        -   package: Kingfisher
         -   target: Analytics
         -   target: KFoundation
         -   target: KUIKit
@@ -158,6 +162,7 @@ targets:
         -   package: Swinject
         -   package: SwinjectAutoregistration
         -   package: Lottie
+        -   package: Kingfisher
         -   target: Analytics
         -   target: KFoundation
         -   target: KUIKit

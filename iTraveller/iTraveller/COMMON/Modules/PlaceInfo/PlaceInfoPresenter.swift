@@ -40,6 +40,7 @@ extension PlaceInfoPresenter {
         Task {
             if let xid {
                 do {
+                    await self.view.setLoadingEnabled(true)
                     let placeInfo = try await self.openMapClient.fetchPlaceInfo(with: xid)
                     self.placeInfo = placeInfo
                     await self.process(placeInfo)

@@ -101,11 +101,19 @@ extension SceneDelegate {
 
         container.autoregister(FavoritesCoordinator.self, initializer: FavoritesCoordinator.init)
             .inObjectScope(.container)
+        container.autoregister(FavoritesViewController.self, initializer: FavoritesViewController.init)
+        container.autoregister(FavoritesPresenter.self, initializer: FavoritesPresenter.init)
+            .initCompleted { resolver, presenter in
+                presenter.inject(
+                    view: resolver.autoResolve()
+                )
+            }
 
         // MARK: - Services
         container.autoregister(AnalyticsService.self, initializer: AnalyticsService.init)
         container.autoregister(Analytics.AnalyticsService.self, initializer: Analytics.AnalyticsService.init)
         container.autoregister(FavoritesProvider.self, initializer: FavoritesProvider.init)
+            .inObjectScope(.container)
 
         // MARK: - Target specific
 

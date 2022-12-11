@@ -78,10 +78,13 @@ class BasePlaceInfoViewController: UIViewController {
         presenter.set(xid)
     }
 
+    func set(_ placeInfo: PlaceInfo) {
+        presenter.set(placeInfo)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
-        setLoadingEnabled(true)
 
         presenter.viewDidLoad()
     }

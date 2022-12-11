@@ -19,3 +19,13 @@ struct PlaceInfo: Codable {
         self.description = placeInfo.info?.description ?? placeInfo.wikipediaExtracts?.text ?? ""
     }
 }
+
+extension PlaceInfo: Hashable {
+    static func == (lhs: PlaceInfo, rhs: PlaceInfo) -> Bool {
+        lhs.xid == rhs.xid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(xid)
+    }
+}
