@@ -18,7 +18,7 @@ extension FavoritesCoordinator: Coordinator {
         let viewController = UIViewController()
         viewController.title = "Favorites"
 
-        let navController = UINavigationController(rootViewController: viewController)
+        let navController = NavigationController(rootViewController: viewController)
 
         let tabBarItem = UITabBarItem(
             title: "Favorites",

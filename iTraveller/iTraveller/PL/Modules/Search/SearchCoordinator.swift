@@ -1,6 +1,14 @@
+import Swinject
 import UIKit
 
 class SearchCoordinator {
+
+    private let container: Container
+
+    init(container: Container) {
+        self.container = container
+    }
+
     private var rootNavigationController: UINavigationController!
     private var tabBarController: TabBarController!
 
@@ -15,10 +23,10 @@ class SearchCoordinator {
 
 extension SearchCoordinator: Coordinator {
     func start(animated: Bool) {
-        let viewController = UIViewController()
+        let viewController: SearchViewController = container.autoResolve()
         viewController.title = "Search"
 
-        let navController = UINavigationController(rootViewController: viewController)
+        let navController = NavigationController(rootViewController: viewController)
 
         let name = "magnifyingglass"
         let tabBarItem = UITabBarItem(

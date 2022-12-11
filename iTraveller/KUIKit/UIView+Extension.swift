@@ -14,7 +14,8 @@ public extension UIView {
         }
 
         if activeAnimations[self] == true {
-            return
+            self.layer.removeAllAnimations()
+            activeAnimations[self] = nil
         }
 
         activeAnimations[self] = true
@@ -42,7 +43,8 @@ public extension UIView {
         }
 
         if activeAnimations[self] == true {
-            return
+            self.layer.removeAllAnimations()
+            activeAnimations[self] = nil
         }
 
         activeAnimations[self] = true
