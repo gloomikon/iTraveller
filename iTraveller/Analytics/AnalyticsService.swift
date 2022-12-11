@@ -5,6 +5,6 @@ public class AnalyticsService {
     }
 
     public func send(_ event: Event) {
-        print(event.name, event.params)
+        print("Sent event \(event.name) with params \(String(describing: event.params))")
     }
 }

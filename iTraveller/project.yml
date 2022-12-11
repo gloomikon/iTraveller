@@ -141,6 +141,7 @@ targets:
         postCompileScripts:
         -   name: Swiftlint
             script: swiftlint
+            basedOnDependencyAnalysis: false
         settings:
             base:
                 CURRENT_PROJECT_VERSION: '1'
@@ -165,6 +166,7 @@ targets:
         postCompileScripts:
         -   name: Swiftlint
             script: swiftlint
+            basedOnDependencyAnalysis: false
         settings:
             base:
                 CURRENT_PROJECT_VERSION: '1'
